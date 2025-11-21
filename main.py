@@ -1,4 +1,4 @@
-import pygame
+import pygame, sys
 from fontSetup import setupFont
 from textboxSetup import TextBox
 
@@ -8,15 +8,35 @@ pygame.init()
 screen = pygame.display.set_mode((500, 250))
 pygame.display.set_caption("Speed Typing Game")
 
-# TextBox
-textbox = TextBox(209, 117, 70, 33, "black", 2, None)
+def gamePlay():
+    gameplayHeader = setupFont("Type [hello] than press ENTER", 40, 60, 40)
+    
+    # Game Loop
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
 
-# Fonts
-headerFont = setupFont("Speed Typing Game", 50, 100, 70)
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mouse = pygame.mouse.get_pos()
+                print(mouse)
+        
+        screen.fill("white")
 
-paragraphFont = setupFont(f"Press ENTER to begin", 30, 155, 120)
+        # RENDER CODE HERE
+        gameplayHeader.displayFont(screen)
+
+        pygame.display.flip()
 
 def mainMenu(screen):
+    # TextBox
+    textbox = TextBox(209, 117, 70, 33, "black", 2, None)
+
+    # Fonts
+    headerFont = setupFont("Speed Typing Game", 50, 100, 70)
+
+    paragraphFont = setupFont(f"Press ENTER to begin", 30, 155, 120)
+
 # GAME LOOP
     running = True
 
@@ -29,6 +49,7 @@ def mainMenu(screen):
                 if event.key == pygame.K_RETURN:
                     textbox.color = "gray"
                     textbox.border = 0
+                    gamePlay()
             
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_RETURN:
