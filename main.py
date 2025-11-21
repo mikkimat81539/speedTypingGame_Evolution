@@ -1,6 +1,7 @@
 import pygame, sys
 from fontSetup import setupFont
 from textboxSetup import TextBox
+from game_play import gameplayWords
 
 pygame.init()
 
@@ -9,7 +10,9 @@ screen = pygame.display.set_mode((500, 250))
 pygame.display.set_caption("Speed Typing Game")
 
 def gamePlay():
-    gameplayHeader = setupFont("Type [hello] than press ENTER", 40, 60, 40)
+    gameWords = gameplayWords.game_words()
+
+    gameplayHeader = setupFont(f"Type [{gameWords}] than press ENTER", 40, 60, 40)
 
     gameplayTextBox = TextBox(90, 100, 320, 40, "black", 5, "")
     
@@ -18,10 +21,6 @@ def gamePlay():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
-
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                mouse = pygame.mouse.get_pos()
-                print(mouse)
             
             if event.type == pygame.KEYDOWN:
                 gameplayTextBox.textboxHandling(event)
