@@ -10,6 +10,8 @@ pygame.display.set_caption("Speed Typing Game")
 
 def gamePlay():
     gameplayHeader = setupFont("Type [hello] than press ENTER", 40, 60, 40)
+
+    gameplayTextBox = TextBox(90, 100, 320, 40, "black", 5, "")
     
     # Game Loop
     while True:
@@ -20,11 +22,16 @@ def gamePlay():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse = pygame.mouse.get_pos()
                 print(mouse)
+            
+            if event.type == pygame.KEYDOWN:
+                gameplayTextBox.textboxHandling(event)
         
         screen.fill("white")
 
         # RENDER CODE HERE
         gameplayHeader.displayFont(screen)
+        gameplayTextBox.drawBox(screen)
+        gameplayTextBox.textboxFont(screen)
 
         pygame.display.flip()
 
