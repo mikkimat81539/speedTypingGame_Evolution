@@ -9,7 +9,7 @@ class setupFont:
         self.x_pos = x_pos
         self.y_pos = y_pos
     
-    def displayFont(self, screen, textbox):
+    def displayFont(self, screen):
         createFont = pygame.font.Font("m5x7.ttf", self.size)
         renderFont = createFont.render(self.text, False, "black")
         screen.blit(renderFont, (self.x_pos, self.y_pos))
