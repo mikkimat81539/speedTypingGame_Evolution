@@ -73,7 +73,7 @@ def gamePlay():
         gameplayTextBox.textboxFont(screen)
 
         endTime = time.time()
-        elapsedTime = round((endTime - startTime), 2)
+        elapsedTime = round((endTime - startTime), 2) * 2 # times two makes it go faster
         
         timer = timeLimit - int(elapsedTime)
 
