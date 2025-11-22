@@ -46,11 +46,16 @@ def gamePlay():
                 gameplayTextBox.textboxHandling(event)
             
                 if event.key == pygame.K_RETURN:
-                    if gameplayTextBox.text !=  words[wordList_index]:
-                        timeLimit -= 5
-                        print(gameplayTextBox.text)
-                    else:
+                    if gameplayTextBox.text.replace("\r", "") ==  words[wordList_index]:
                         timeLimit += 5
+                        gameplayTextBox.color = "#257501"
+                        # gameplayTextBox.color = "black"
+
+                    else:
+                        timeLimit -= 5
+                        # print(repr(gameplayTextBox.text))
+                        gameplayTextBox.color = "#750101"
+                        # gameplayTextBox.color = "black"
                     
                     gameplayTextBox.text = "" # clear textbox
                     
