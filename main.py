@@ -8,7 +8,7 @@ from random_word import RandomWords
 pygame.init()
 
 # SCREEN
-screen = pygame.display.set_mode((500, 250))
+screen = pygame.display.set_mode((600, 250))
 pygame.display.set_caption("Speed Typing Game")
 
 def gamePlay():
