@@ -1,4 +1,4 @@
-import pygame, sys
+import pygame, sys, time
 from fontSetup import setupFont
 from textboxSetup import TextBox
 from game_play import gameplayWords
@@ -15,9 +15,11 @@ def gamePlay():
     wordList_index = 0
     words = gameplayWords.game_words()
 
-    # gameplayHeader = setupFont(f"Type [{gameplayWords.game_words(wordList_index)}] than press ENTER", 40, 60, 40)
+    gameplayTextBox = TextBox(100, 100, 320, 40, "black", 5, "")
 
-    gameplayTextBox = TextBox(90, 100, 320, 40, "black", 5, "")
+    # Time
+    timeLimit = 20
+    startTime = time.time()
     
     # Game Loop
     while True:
@@ -34,6 +36,7 @@ def gamePlay():
                     if wordList_index >= len(words):
                         randomW = RandomWords().get_random_word()
                         words.append(randomW)
+                    timeLimit += 5
         
         screen.fill("white")
 
@@ -42,6 +45,22 @@ def gamePlay():
         gameplayHeader.displayFont(screen)
         gameplayTextBox.drawBox(screen)
         gameplayTextBox.textboxFont(screen)
+
+        endTime = time.time()
+        elapsedTime = round((endTime - startTime), 2)
+
+        keys = pygame.key.get_pressed()
+
+        # if keys[pygame.K_RETURN]:
+        #     pygame.key.set_repeat(0)
+        #     timeLimit += 5
+        
+        timer = timeLimit - int(elapsedTime)
+
+        if elapsedTime > timeLimit:
+            setupFont("Game Over", 20, 175, 100).displayFont(screen)
+        else:
+            setupFont(timer, 70, 400, 150).displayFont(screen)
 
         pygame.display.flip()
 

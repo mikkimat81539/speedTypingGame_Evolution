@@ -19,7 +19,7 @@ class TextBox:
     def textboxFont(self, screen):
         createFont = pygame.font.Font("m5x7.ttf", 40)
         renderFont = createFont.render(self.text, False, "black")
-        screen.blit(renderFont, (self.x_pos + 10, self.y_pos + 5))
+        screen.blit(renderFont, (self.x_pos + 10, self.y_pos + 3))
 
     
     def textboxHandling(self, event):

@@ -4,7 +4,7 @@ pygame.init()
 
 class setupFont:
     def __init__(self, text, size, x_pos, y_pos):
-        self.text = text
+        self.text = str(text)
         self.size = size
         self.x_pos = x_pos
         self.y_pos = y_pos
