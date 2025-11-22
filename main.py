@@ -3,6 +3,8 @@ from fontSetup import setupFont
 from textboxSetup import TextBox
 from game_play import gameplayWords
 
+from random_word import RandomWords
+
 pygame.init()
 
 # SCREEN
@@ -30,12 +32,13 @@ def gamePlay():
                     wordList_index += 1
 
                     if wordList_index >= len(words):
-                        wordList_index = 0
+                        randomW = RandomWords().get_random_word()
+                        words.append(randomW)
         
         screen.fill("white")
 
         # RENDER CODE HERE
-        gameplayHeader = setupFont(f"Type [{words[wordList_index]}] than press ENTER", 40, 60, 40)
+        gameplayHeader = setupFont(f"Type [{words[wordList_index]}] than press ENTER", 40, 40, 40)
         gameplayHeader.displayFont(screen)
         gameplayTextBox.drawBox(screen)
         gameplayTextBox.textboxFont(screen)
