@@ -11,8 +11,9 @@ pygame.display.set_caption("Speed Typing Game")
 
 def gamePlay():
     wordList_index = 0
+    words = gameplayWords.game_words()
 
-    gameplayHeader = setupFont(f"Type [{gameplayWords.game_words(wordList_index)}] than press ENTER", 40, 60, 40)
+    # gameplayHeader = setupFont(f"Type [{gameplayWords.game_words(wordList_index)}] than press ENTER", 40, 60, 40)
 
     gameplayTextBox = TextBox(90, 100, 320, 40, "black", 5, "")
     
@@ -28,12 +29,13 @@ def gamePlay():
                 if event.key == pygame.K_RETURN:
                     wordList_index += 1
 
-                    if wordList_index >= 4:
-                        wordList_index = 3
+                    if wordList_index >= len(words):
+                        wordList_index = 0
         
         screen.fill("white")
 
         # RENDER CODE HERE
+        gameplayHeader = setupFont(f"Type [{words[wordList_index]}] than press ENTER", 40, 60, 40)
         gameplayHeader.displayFont(screen)
         gameplayTextBox.drawBox(screen)
         gameplayTextBox.textboxFont(screen)
