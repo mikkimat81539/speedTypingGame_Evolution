@@ -22,11 +22,8 @@ class TextBox:
         screen.blit(renderFont, (self.x_pos + 10, self.y_pos + 3))
 
     
-    def textboxHandling(self, event):
-        if event.key == pygame.K_RETURN:
-            self.text = ""
-            
-        elif event.key == pygame.K_BACKSPACE:
+    def textboxHandling(self, event):            
+        if event.key == pygame.K_BACKSPACE:
             self.text = self.text[:-1]
         else:
             if len(self.text) < 27:
